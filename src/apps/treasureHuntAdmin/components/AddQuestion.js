@@ -68,7 +68,7 @@ const AddQuestion = ({ classes, handleSubmit, onSubmit }) => {
             variant='contained'
             color='secondary'
             component={Link}
-            to={`/treasurehuntadmin`}
+            to={`/treasure-hunt`}
           >
             Anulare
           </Button>

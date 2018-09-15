@@ -1,9 +1,10 @@
 import React from 'react'
 
-import { withStyles } from '@material-ui/core'
+import { withStyles, withWidth, IconButton } from '@material-ui/core'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
+import MenuIcon from '@material-ui/icons/Menu'
 
 const styles = theme => ({
   appBar: {
@@ -11,9 +12,17 @@ const styles = theme => ({
   }
 })
 
-const Header = ({ classes, title }) => (
+const Header = ({ classes, title, width, onMenuClicked }) => (
   <AppBar className={classes.appBar}>
     <Toolbar>
+      {width === 'xs' &&
+        <IconButton
+          color='inherit'
+          aria-label='Open drawer'
+          onClick={onMenuClicked}
+        >
+          <MenuIcon />
+        </IconButton>}
       <Typography variant='title' color='inherit'>
         {title}
       </Typography>
@@ -21,4 +30,4 @@ const Header = ({ classes, title }) => (
   </AppBar>
 )
 
-export default withStyles(styles)(Header)
+export default withStyles(styles)(withWidth()(Header))

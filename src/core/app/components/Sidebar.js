@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { withStyles } from '@material-ui/core'
+import { withStyles, withWidth } from '@material-ui/core'
 import Drawer from '@material-ui/core/Drawer'
 
 const styles = theme => ({
@@ -8,15 +8,17 @@ const styles = theme => ({
   toolbar: theme.mixins.toolbar
 })
 
-const Sidebar = ({ classes, children }) => (
+const Sidebar = ({ classes, children, width, open, onClose }) => (
   <Drawer
     classes={{ paper: classes.drawerPaper }}
     anchor='left'
-    variant='permanent'
+    variant={width !== 'xs' ? 'permanent' : undefined}
+    open={open}
+    onClose={onClose}
   >
-    <div className={classes.toolbar} />
+    {width !== 'xs' && <div className={classes.toolbar} />}
     {children}
   </Drawer>
 )
 
-export default withStyles(styles)(Sidebar)
+export default withStyles(styles)(withWidth()(Sidebar))

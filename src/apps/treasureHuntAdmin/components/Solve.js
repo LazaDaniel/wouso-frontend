@@ -12,8 +12,11 @@ import { withStyles } from '@material-ui/core'
 
 const styles = theme => ({
   paper: {
-    width: 400,
-    padding: '48px 40px 36px'
+    [theme.breakpoints.up('sm')]: {
+      padding: '48px 40px 36px',
+      width: 400
+    },
+    padding: theme.spacing.unit * 2
   },
   actions: {
     paddingTop: 3 * theme.spacing.unit,
@@ -26,7 +29,7 @@ const styles = theme => ({
 })
 
 const Solve = ({ classes, active, handleSubmit, onSubmit }) => {
-  console.log(active)
+  // console.log(active)
   const { answers, text: questionText } = active.question
   return (
     <Paper className={classes.paper}>
@@ -66,7 +69,7 @@ const Solve = ({ classes, active, handleSubmit, onSubmit }) => {
             variant='contained'
             color='secondary'
             component={Link}
-            to={'/treasurehuntadmin/dashboard'}
+            to={'/treasure-hunt/dashboard'}
           >
             Anulare
           </Button>

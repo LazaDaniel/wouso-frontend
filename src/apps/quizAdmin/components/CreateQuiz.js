@@ -1,5 +1,4 @@
 import React from 'react'
-import { Field } from 'redux-form'
 import { Link } from 'react-router-dom'
 import {
   Button,
@@ -8,14 +7,11 @@ import {
   ListItemText,
   Checkbox,
   ListItemSecondaryAction,
-  Divider,
   Typography,
   Paper
 } from '@material-ui/core'
 import TextField from '@material-ui/core/TextField'
 import { withStyles } from '@material-ui/core'
-import WrappedTextField from 'shared/reduxForm/components/TextField'
-import WrappedDateTimePicker from './WrappedDateTimePicker'
 
 const styles = theme => ({
   paper: {

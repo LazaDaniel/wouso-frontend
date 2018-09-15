@@ -9,7 +9,7 @@ import { getQuestions, postQuest } from '../actions'
 
 import { reduxForm } from 'redux-form'
 
-const CreateQuestForm = reduxForm({ form: 'treasureHuntAdmin/CreateQuest' })(
+const CreateQuestForm = reduxForm({ form: 'treasure-hunt/CreateQuest' })(
   CreateQuestComponent
 )
 
@@ -22,7 +22,7 @@ class CreateQuest extends React.Component {
 
   onSubmit = quest => {
     if (!quest.questions || quest.questions.length === 0) {
-      console.log('No question selected!')
+      // console.log('No question selected!')
       return null
     }
     this.props

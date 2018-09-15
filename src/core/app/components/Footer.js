@@ -8,10 +8,12 @@ const styles = theme => ({
     height: theme.custom.footer.height
   },
   content: {
-    paddingLeft: theme.custom.drawer.width,
+    [theme.breakpoints.up('sm')]: {
+      paddingLeft: theme.custom.drawer.width,
+      width: `calc(100% - ${theme.custom.drawer.width}px)`
+    },
     display: 'flex',
     justifyContent: 'center',
-    width: `calc(100% - ${theme.custom.drawer.width}px)`,
     paddingTop: theme.spacing.unit,
     paddingBottom: theme.spacing.unit
   }

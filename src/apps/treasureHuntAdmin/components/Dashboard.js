@@ -15,8 +15,11 @@ import { withStyles } from '@material-ui/core'
 
 const styles = theme => ({
   paper: {
-    width: 400,
-    padding: '48px 40px 36px'
+    [theme.breakpoints.up('sm')]: {
+      padding: '48px 40px 36px',
+      width: 400
+    },
+    padding: theme.spacing.unit * 2
   },
   actions: {
     paddingTop: 3 * theme.spacing.unit,

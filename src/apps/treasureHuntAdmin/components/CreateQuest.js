@@ -12,7 +12,6 @@ import {
 import { Field, FieldArray } from 'redux-form'
 import TextField from '@material-ui/core/TextField'
 import WrappedTextField from 'shared/reduxForm/components/TextField'
-import WrappedCheckbox from './WrappedCheckbox'
 import { required } from 'utils/validators'
 
 import { withStyles } from '@material-ui/core'
@@ -49,7 +48,7 @@ class CreateQuiz extends React.Component {
         key={id}
         button
         onClick={() => {
-          console.log(fields.getAll())
+          // console.log(fields.getAll())
           if (!fields.getAll() || !fields.getAll().some(e => e.id === id)) {
             fields.push({ id, text })
           }
@@ -140,7 +139,7 @@ class CreateQuiz extends React.Component {
               variant='contained'
               color='secondary'
               component={Link}
-              to={'/treasurehuntadmin/dashboard'}
+              to={'/treasure-admin/dashboard'}
             >
               Anulare
             </Button>

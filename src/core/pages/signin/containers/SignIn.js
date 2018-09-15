@@ -13,8 +13,11 @@ import { isUserAuthenticated } from '../reducers/user'
 
 const styles = theme => ({
   paper: {
-    width: 400,
-    padding: '48px 40px 36px'
+    [theme.breakpoints.up('sm')]: {
+      width: 400,
+      padding: '48px 40px 36px'
+    },
+    padding: 2 * theme.spacing.unit
   }
 })
 

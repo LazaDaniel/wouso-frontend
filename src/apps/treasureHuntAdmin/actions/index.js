@@ -141,7 +141,7 @@ export const answerQuestion = (sessionId, answer) => dispatch => {
         path: 'apps/wouso-treasure-hunt/active',
         data: { sessionId, answer },
         success: payload => () => {
-          console.log(payload)
+          // console.log(payload)
           resolve(payload)
         },
         failure: err => () => {

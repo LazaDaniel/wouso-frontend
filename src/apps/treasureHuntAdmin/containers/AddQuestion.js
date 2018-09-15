@@ -9,7 +9,7 @@ import { postQuestion } from '../actions'
 
 import { reduxForm } from 'redux-form'
 
-const AddQuestionForm = reduxForm({ form: 'treasureHuntAdmin/AddQuestion' })(
+const AddQuestionForm = reduxForm({ form: 'trasure-hunt/AddQuestion' })(
   AddQuestionComponent
 )
 
@@ -20,7 +20,7 @@ class AddQuestion extends React.Component {
         text,
         answers: { valid, invalid: [invalidOne, invalidTwo, invalidThree] }
       })
-      .then(() => this.props.history.push('treasurehuntadmin/dashboard'))
+      .then(() => this.props.history.push('treasure-hunt/dashboard'))
       .catch(console.err)
   }
 

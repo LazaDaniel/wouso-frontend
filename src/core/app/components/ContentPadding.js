@@ -5,8 +5,10 @@ import { withStyles } from '@material-ui/core'
 const styles = theme => ({
   toolbar: theme.mixins.toolbar,
   container: {
-    paddingLeft: theme.custom.drawer.width,
-    backgroundColor: theme.palette.background.default
+    backgroundColor: theme.palette.background.default,
+    [theme.breakpoints.up('sm')]: {
+      paddingLeft: theme.custom.drawer.width
+    }
   }
 })
 

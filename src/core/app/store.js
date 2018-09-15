@@ -11,7 +11,7 @@ const log = ({ ignore }) => store => next => action => {
     !ignore ||
     !ignore.some(actionType => action.type.startsWith(actionType))
   ) {
-    console.log(action.type)
+    // console.log(action.type)
   }
 
   next(action)

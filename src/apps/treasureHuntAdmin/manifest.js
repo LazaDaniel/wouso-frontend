@@ -3,8 +3,8 @@ import Routes from './containers/Routes'
 import rootReducer from './reducers'
 
 export default {
-  title: 'Treasure Hunt Admin',
-  baseUrl: 'treasurehuntadmin',
+  title: 'Treasure Hunt',
+  baseUrl: 'treasure-hunt',
   requiredBackendApps: ['wouso-treasure-hunt'],
   routes: Routes,
   navigation: Navigation,

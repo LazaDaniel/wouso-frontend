@@ -23,33 +23,90 @@ import Orchestrator from '../containers/Orchestrator'
  */
 const LoadingOverlay = withRouter(LoadingOverlayComponent)
 
-const renderContent = ({ navigation, routes, title }) => (
-  <React.Fragment>
-    <Sidebar>{navigation}</Sidebar>
-    <Header title={title} />
-    <ContentPadding>
-      <LoadingOverlay delay={1000}>
-        <Content>
-          <SessionChecker>
-            <ContentSwitch routes={routes} />
-          </SessionChecker>
-        </Content>
-      </LoadingOverlay>
-    </ContentPadding>
-    <Footer>
-      <Copyright />
-    </Footer>
-  </React.Fragment>
-)
+class Orchestrated extends React.Component {
+  state = {
+    drawerOpen: false
+  }
 
-const App = () => (
-  <MuiThemeProvider theme={theme}>
-    <Provider store={store}>
-      <BrowserRouter>
-        <Orchestrator render={renderContent} />
-      </BrowserRouter>
-    </Provider>
-  </MuiThemeProvider>
-)
+  handleMenuClicked = () => {
+    this.setState({ drawerOpen: !this.state.drawerOpen })
+  }
+
+  handleDrawerClose = () => this.setState({ drawerOpen: false })
+
+  render () {
+    const { navigation, routes, title } = this.props
+    return (
+      <React.Fragment>
+        <Sidebar open={this.state.drawerOpen} onClose={this.handleDrawerClose}>
+          {navigation}
+        </Sidebar>
+        <Header title={title} onMenuClicked={this.handleMenuClicked} />
+        <ContentPadding>
+          <LoadingOverlay delay={1000}>
+            <Content>
+              <SessionChecker>
+                <ContentSwitch routes={routes} />
+              </SessionChecker>
+            </Content>
+          </LoadingOverlay>
+        </ContentPadding>
+        <Footer>
+          <Copyright />
+        </Footer>
+      </React.Fragment>
+    )
+  }
+}
+
+class App extends React.Component {
+  state = {
+    drawerOpen: false
+  }
+
+  handleMenuClicked = () => {
+    this.setState({ drawerOpen: !this.state.drawerOpen })
+  }
+
+  handleDrawerClose = () => this.setState({ drawerOpen: false })
+
+  renderContent = ({ navigation, routes, title }) => {
+    return (
+      <React.Fragment>
+        <Sidebar open={this.state.drawerOpen} onClose={this.handleDrawerClose}>
+          {navigation}
+        </Sidebar>
+        <Header
+          title={`Rendered ${this.state.drawerOpen}`}
+          onMenuClicked={this.handleMenuClicked}
+        />
+        <ContentPadding>
+          <LoadingOverlay delay={1000}>
+            <Content>
+              <SessionChecker>
+                <ContentSwitch routes={routes} />
+              </SessionChecker>
+            </Content>
+          </LoadingOverlay>
+        </ContentPadding>
+        <Footer>
+          <Copyright />
+        </Footer>
+      </React.Fragment>
+    )
+  }
+
+  render () {
+    return (
+      <MuiThemeProvider theme={theme}>
+        <Provider store={store}>
+          <BrowserRouter>
+            <Orchestrator component={Orchestrated} />
+          </BrowserRouter>
+        </Provider>
+      </MuiThemeProvider>
+    )
+  }
+}
 
 export default App

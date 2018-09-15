@@ -132,13 +132,15 @@ class Orchestrator extends React.Component {
   }
 
   render () {
-    const { render } = this.props
+    const { component: Component } = this.props
 
-    return render({
-      navigation: this.state.usable.map(this.renderNavigation),
-      routes: this.state.usable.map(this.renderRoutes),
-      title: this.getTitle()
-    })
+    return (
+      <Component
+        navigation={this.state.usable.map(this.renderNavigation)}
+        routes={this.state.usable.map(this.renderRoutes)}
+        title={this.getTitle()}
+      />
+    )
   }
 }
 
