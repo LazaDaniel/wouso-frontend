@@ -31,16 +31,23 @@ const styles = theme => ({
   }
 })
 
-const renderQuest = quest => (
-  <ListItem key={quest.id} button component={Link} to={`solve/${quest.id}`}>
-    <ListItemAvatar>
-      <Avatar>
-        <AssignmentIcon />
-      </Avatar>
-    </ListItemAvatar>
-    <ListItemText primary={quest.name} />
-  </ListItem>
-)
+const renderQuest = quest => {
+  let status = 'Disponibil'
+  // if (quest.thActiveSessions.length > 0) status='Expirat'
+  if (quest.thActiveSessions.length > 0) {
+    status = `Ai răspuns la ${quest.thActiveSessions[0].question - 1} / 10 întrebări`
+  }
+  return (
+    <ListItem key={quest.id} button component={Link} to={`solve/${quest.id}`}>
+      <ListItemAvatar>
+        <Avatar>
+          <AssignmentIcon />
+        </Avatar>
+      </ListItemAvatar>
+      <ListItemText primary={quest.name} secondary={status} />
+    </ListItem>
+  )
+}
 
 const Dashboard = ({ classes, quests }) => {
   return (
